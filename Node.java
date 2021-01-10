@@ -20,4 +20,21 @@ public class Node{
    return prev;
  }
 
+ public String setData(String value){
+   String replaced = data;
+   data = value;
+   return replaced;
+ }
+
+ public Node setNext(Node n){
+   Node replaced = next;
+   next = n;
+   return replaced;
+ }
+
+ public Node setPrev(Node p){
+   Node replaced = prev;
+   prev = p;
+   return replaced;
+ }
 }
