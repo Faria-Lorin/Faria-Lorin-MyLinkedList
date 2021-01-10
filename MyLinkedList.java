@@ -107,6 +107,21 @@ public String get(int index){
    }
    return out;
  }
+ public String toStringReversed(){
+   size();
+   String out = "[";
+   Node current = end;
+   for(int i = size; i >= 0; i--){
+     if (i == 0){
+       out += current.getData() + "]";
+     }
+     else{
+       out += current.getData() + ", ";
+     }
+     current = current.getPrev();
+   }
+   return out;
+ }
 
 public static void main(String[] args) {
   MyLinkedList a = new MyLinkedList();
@@ -119,6 +134,7 @@ public static void main(String[] args) {
     }
   }
   a.add(3, "9");
+  System.out.println(a.toStringReversed());
   System.out.println(a.toString());
   System.out.println(a.set(3, "snow"));
   System.out.println(a.get(3));
