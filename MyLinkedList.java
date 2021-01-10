@@ -55,6 +55,7 @@ public class MyLinkedList{
  }
  size ++;
 }
+
 public String get(int index){
   String out = "";
   Node current = start;
@@ -91,8 +92,22 @@ public String get(int index){
   }
   return out;
  }
-    /*public String toString();
- */
+ public String toString(){
+   size();
+   String out = "[";
+   Node current = start;
+   for(int i = 0; i < size; i++){
+     if (i == size - 1){
+       out += current.getData() + "]";
+     }
+     else{
+       out += current.getData() + ", ";
+     }
+     current = current.getNext();
+   }
+   return out;
+ }
+
 public static void main(String[] args) {
   MyLinkedList a = new MyLinkedList();
   MyLinkedList b = new MyLinkedList();
@@ -104,7 +119,7 @@ public static void main(String[] args) {
     }
   }
   a.add(3, "9");
-  System.out.println(a.get(3));
+  System.out.println(a.toString());
   System.out.println(a.set(3, "snow"));
   System.out.println(a.get(3));
   System.out.println(a.size());
