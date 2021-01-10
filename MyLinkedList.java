@@ -13,10 +13,12 @@ public class MyLinkedList{
      count++;;
      current = current.getNext();
    }
+   size = count;
    return count;
  }
 
  public boolean add(String value){
+  size();
   Node a = new Node(value);
   a.setNext(null);
   if (size == 0){
@@ -34,13 +36,14 @@ public class MyLinkedList{
 }
 
  public void add(int index, String value){
+  size();
   if (index >= size){
     throw new IndexOutOfBoundsException("Index" + index + "is out of bounds");
   }
- else {
-   Node temp = new Node(value);
-   Node current = start;
-   for (int i = 0; i <= index; i++){
+  else {
+    Node temp = new Node(value);
+    Node current = start;
+    for (int i = 0; i <= index; i++){
      if (i == index){
        temp.setNext(current);
        temp.setPrev(current.getPrev());
@@ -65,6 +68,7 @@ public static void main(String[] args) {
       b.add(i+"");
     }
   }
+  a.add(2,"8");
   System.out.println(a.size());
   System.out.println(b.size());
 }
