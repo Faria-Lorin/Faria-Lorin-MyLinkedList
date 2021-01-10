@@ -37,25 +37,36 @@ public class MyLinkedList{
 
  public void add(int index, String value){
   size();
-  if (index >= size){
-    throw new IndexOutOfBoundsException("Index" + index + "is out of bounds");
+  if (index >= size || index < size){
+    throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
   }
   else {
     Node temp = new Node(value);
     Node current = start;
-    for (int i = 0; i <= index; i++){
+    for (int i = 0; i < index + 1; i++){
      if (i == index){
-       temp.setNext(current);
        temp.setPrev(current.getPrev());
+       temp.setNext(current);
        current.setPrev(temp);
        current.getPrev().setNext(temp);
      }
      current = current.getNext();
    }
  }
+ size ++;
 }
-  /*public String get(int index);
- public String set(int index, String value);
+public String get(int index){
+  String out = "";
+  Node current = start;
+  for (int i = 0; i < index + 1; i++){
+   if (i == index){
+     out = current.getData();
+   }
+   current = current.getNext();
+ }
+ return out;
+}
+   /*public String set(int index, String value);
  public String toString();
  */
 public static void main(String[] args) {
@@ -63,12 +74,12 @@ public static void main(String[] args) {
   MyLinkedList b = new MyLinkedList();
   for(int i = 0; i < 10; i++){
     if(i < 5){
-      a.add(i+"");
+      a.add(i+"h");
     }else{
       b.add(i+"");
     }
   }
-  a.add(2,"8");
+  System.out.println(a.get(3));
   System.out.println(a.size());
   System.out.println(b.size());
 }
