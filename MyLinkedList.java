@@ -32,13 +32,16 @@ public class MyLinkedList{
  size++;
  return true;
 }
- /*
+
  public void add(int index, String value){
   if (index >= size){
-  throw new IndexOutOfBoundsException("Index" + index + "is out of bounds")
+    throw new IndexOutOfBoundsException("Index" + index + "is out of bounds");
+  }
+ else {
+   Node adding = new Node(value);
+ }
 }
-}
- public String get(int index);
+  /*public String get(int index);
  public String set(int index, String value);
  public String toString();
  */
