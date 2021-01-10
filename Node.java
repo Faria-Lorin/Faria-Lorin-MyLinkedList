@@ -7,4 +7,17 @@ public class Node{
    next = null;
    prev = null;
  }
+
+ public String getData(){
+   return data;
+ }
+
+ public Node getNext(){
+   return next;
+ }
+
+ public Node getPrev(){
+   return prev;
+ }
+
 }
