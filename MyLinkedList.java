@@ -72,8 +72,26 @@ public String get(int index){
  }
  return out;
 }
-   /*public String set(int index, String value);
- public String toString();
+
+ public String set(int index, String value){
+   String out = "";
+   Node current = start;
+   size();
+   if (index >= size || index < 0){
+     throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+   }
+   else {
+     for (int i = 0; i < index + 1; i++){
+      if (i == index){
+        out = current.getData();
+        current.setData(value);
+      }
+      current = current.getNext();
+    }
+  }
+  return out;
+ }
+    /*public String toString();
  */
 public static void main(String[] args) {
   MyLinkedList a = new MyLinkedList();
@@ -85,6 +103,9 @@ public static void main(String[] args) {
       b.add(i+"");
     }
   }
+  a.add(3, "9");
+  System.out.println(a.get(3));
+  System.out.println(a.set(3, "snow"));
   System.out.println(a.get(3));
   System.out.println(a.size());
   System.out.println(b.size());
