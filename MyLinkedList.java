@@ -45,10 +45,12 @@ public class MyLinkedList{
     Node current = start;
     for (int i = 0; i < index + 1; i++){
      if (i == index){
-       temp.setPrev(current.getPrev());
-       temp.setNext(current);
+       Node toNext = current;
+       Node toPrev = current.getPrev();
+       temp.setPrev(toPrev);
+       temp.setNext(toNext);
        current.setPrev(temp);
-       current.getPrev().setNext(temp);
+       toPrev.setNext(temp);
      }
      current = current.getNext();
    }
@@ -111,8 +113,8 @@ public String get(int index){
    size();
    String out = "[";
    Node current = end;
-   for(int i = size; i >= 0; i--){
-     if (i == 0){
+   for(int i = size; i > 0; i--){
+     if (i == 1){
        out += current.getData() + "]";
      }
      else{
