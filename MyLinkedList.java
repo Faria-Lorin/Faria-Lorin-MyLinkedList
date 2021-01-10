@@ -38,7 +38,17 @@ public class MyLinkedList{
     throw new IndexOutOfBoundsException("Index" + index + "is out of bounds");
   }
  else {
-   Node adding = new Node(value);
+   Node temp = new Node(value);
+   Node current = start;
+   for (int i = 0; i <= index; i++){
+     if (i == index){
+       temp.setNext(current);
+       temp.setPrev(current.getPrev());
+       current.setPrev(temp);
+       current.getPrev().setNext(temp);
+     }
+     current = current.getNext();
+   }
  }
 }
   /*public String get(int index);
