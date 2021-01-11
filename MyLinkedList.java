@@ -181,6 +181,13 @@ public class MyLinkedList{
   size --;
   return out;
  }
+ public void extend(MyLinkedList other){
+   this.size = this.size() + other.size();
+   this.end.setNext(other.start);
+   this.end = other.end;
+   other.end = null;
+   other.start = null;
+ }
  public static void main(String[] args) {
       MyLinkedList words = new MyLinkedList();
       MyLinkedList size1 = new MyLinkedList();
@@ -211,13 +218,14 @@ public class MyLinkedList{
 
       }
       System.out.println(size1.toString());
-      size1.remove(0);
+      words.extend(size1);
       words.remove(0);
-      System.out.println(size1.toString());
+
+      System.out.println(size1.toString() + size1.size());
       System.out.println("Your result:\n"+words+" "+words.size());
       System.out.println("expected:\n[head, 0x, 0, 1x, 1, 2x, 2, 3x, 3, 4x, 4, 5x, 5, 6x, 6, 7x, 7, 8x, 8, 9x, 9, tail] 22");
       System.out.println("\nYour result:\n"+words.toStringReversed()+" "+words.size());
       System.out.println("expected:\n[tail, 9, 9x, 8, 8x, 7, 7x, 6, 6x, 5, 5x, 4, 4x, 3, 3x, 2, 2x, 1, 1x, 0, 0x, head] 22");
 
-}
+    }
 }
