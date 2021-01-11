@@ -183,9 +183,18 @@ public class MyLinkedList{
  }
  public void extend(MyLinkedList other){
    this.size = this.size() + other.size();
-   other.start.setPrev(this.end);
-   this.end.setNext(other.start);
-   this.end = other.end;
+   if (this.size() == 0 && other.size > 0){
+     this.add(other.start.getData());
+     this.end.setNext(other.start.getNext());
+     this.end = other.end;
+     other.end.setPrev(this.end.getPrev());
+   }
+   else if (other.size() == 0){}
+   else{
+     this.end.setNext(other.start);
+     other.start.setPrev(this.end);
+     this.end = other.end;
+   }
    other.end = null;
    other.start = null;
  }
