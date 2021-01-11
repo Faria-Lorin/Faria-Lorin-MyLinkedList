@@ -6,6 +6,7 @@ public class MyLinkedList{
    end = null;
    size = 0;
  }
+
  public int size(){
    int count = 0;
    Node current = start;
@@ -69,7 +70,7 @@ public class MyLinkedList{
  size ++;
 }
 
-public String get(int index){
+ public String get(int index){
   String out = "";
   Node current = start;
   size();
@@ -105,6 +106,7 @@ public String get(int index){
   }
   return out;
  }
+
  public String toString(){
    size();
    String out = "[";
@@ -120,6 +122,7 @@ public String get(int index){
    }
    return out;
  }
+
  public String toStringReversed(){
    size();
    String out = "[";
@@ -136,7 +139,43 @@ public String get(int index){
    return out;
  }
 
-public static void main(String[] args) {
+ public String remove(int index){
+   size();
+   String out = "";
+   if (index >= size || index < 0){
+     throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+   }
+   else {
+     Node toRemove = start;
+     for (int i = 0; i <= index; i++){
+      if (i == index){
+        out += toRemove.getData();
+        if (index == 0){
+           start = toRemove.getNext();
+           toRemove.setNext(null);
+           start.setPrev(null);
+        }
+        else if (index == size - 1){
+           end = toRemove.getPrev();
+           toRemove.setPrev(null);
+           end.setNext(null);
+        }
+        else {
+          Node nextToRemove = toRemove.getNext();
+          Node prevToRemove = toRemove.getPrev();
+          prevToRemove.setNext(nextToRemove);
+          nextToRemove.setPrev(prevToRemove);
+          toRemove.setPrev(null);
+          toRemove.setNext(null);
+        }
+      }
+     else toRemove = toRemove.getNext();
+    }
+  }
+  size --;
+  return out;
+ }
+ public static void main(String[] args) {
       MyLinkedList words = new MyLinkedList();
 
       //add 0-9 in order
@@ -165,7 +204,7 @@ public static void main(String[] args) {
 
       }
 
-
+      words.remove(11);
       System.out.println("Your result:\n"+words+" "+words.size());
       System.out.println("expected:\n[head, 0x, 0, 1x, 1, 2x, 2, 3x, 3, 4x, 4, 5x, 5, 6x, 6, 7x, 7, 8x, 8, 9x, 9, tail] 22");
       System.out.println("\nYour result:\n"+words.toStringReversed()+" "+words.size());
