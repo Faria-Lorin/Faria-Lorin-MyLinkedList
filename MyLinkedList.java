@@ -183,6 +183,7 @@ public class MyLinkedList{
  }
  public void extend(MyLinkedList other){
    this.size = this.size() + other.size();
+   other.start.setPrev(this.end);
    this.end.setNext(other.start);
    this.end = other.end;
    other.end = null;
@@ -219,7 +220,6 @@ public class MyLinkedList{
       }
       System.out.println(size1.toString());
       words.extend(size1);
-      words.remove(0);
 
       System.out.println(size1.toString() + size1.size());
       System.out.println("Your result:\n"+words+" "+words.size());
